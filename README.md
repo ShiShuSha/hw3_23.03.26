@@ -4,8 +4,10 @@
 
 ## Запуск
 
-```pip install fastapi uvicorn sqlalchemy```
-```uvicorn main:app --reload```
+```
+pip install fastapi uvicorn sqlalchemy
+uvicorn main:app --reload
+```
 
 ## Описание задачи
 
