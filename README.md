@@ -2,6 +2,11 @@
 
 В предыдущем домашнем задании к теме «Работа с базами данных: FastAPI, SQLAlchemy, Alembic» вы разработали модель данных для хранения данных из CSV-файла.
 
+## Запуск
+
+```pip install fastapi uvicorn sqlalchemy```
+```uvicorn main:app --reload```
+
 ## Описание задачи
 
 Дан CSV-файл `students.csv`, содержащий данные о студентах:
