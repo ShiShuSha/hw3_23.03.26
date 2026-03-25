@@ -56,3 +56,29 @@ def get_avg_by_faculty(db: Session, faculty: str):
     return db.query(func.avg(Grade.grade)).join(Student).filter(
         Student.faculty == faculty
     ).scalar()
+
+
+import csv
+
+def load_from_csv(db: Session, file_path: str):
+    with open(file_path, encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)
+
+        for row in reader:
+            last_name, first_name, faculty, course_name, grade = row
+
+            student = Student(first_name=first_name, last_name=last_name, faculty=faculty)
+            course = Course(name=course_name)
+
+            db.add(student)
+            db.add(course)
+            db.commit()
+
+            grade_obj = Grade(
+                student_id=student.id,
+                course_id=course.id,
+                grade=int(grade)
+            )
+            db.add(grade_obj)
+            db.commit()
