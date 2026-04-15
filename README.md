@@ -139,6 +139,7 @@ POST ``` /auth/login ```
 ```
 
 3. Доступ к CRUD
+
 Добавить в headers: user_id: 1
 
 Без этого будет: 401 Unauthorized
