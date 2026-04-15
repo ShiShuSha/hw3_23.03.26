@@ -58,3 +58,19 @@ def low_grades(course: str, db: Session = Depends(get_db)):
 @app.get("/avg/{faculty}")
 def avg_grade(faculty: str, db: Session = Depends(get_db)):
     return crud.get_avg_by_faculty(db, faculty)
+
+
+
+
+from fastapi import Header, HTTPException
+from auth import router as auth_router
+
+app = FastAPI()
+
+app.include_router(auth_router)
+
+
+def get_current_user(user_id: int = Header(None)):
+    if user_id is None:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    return user_id
